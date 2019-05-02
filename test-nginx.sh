@@ -21,7 +21,7 @@ echo "# "
 while true
 do
 
-	curl -s localhost:${PORT} | head -n1 | ts | tee $FILENAME
+	curl -s localhost:${PORT} | head -n1 | ts | tee -a $FILENAME
 	sleep 1
 
 done
