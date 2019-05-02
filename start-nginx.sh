@@ -15,7 +15,13 @@ echo "# "
 echo "# Starting nginx..."
 echo "# "
 
-ID=$(docker run -d --name $NAME -p $PORT:80 --rm nginx)
+ID=""
+
+while test ! "$ID"
+do
+	ID=$(docker run -d --name $NAME -p $PORT:80 --rm nginx || true)
+	sleep 1
+done
 
 echo "# "
 echo "# Nginx started!"
