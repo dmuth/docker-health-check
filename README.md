@@ -5,7 +5,7 @@ I run Docker both in production on CentOS, and also run it on my Macs for develo
 and testing. Recently, I noticed some weird behavior on my Mac's version of Docker
 where sometimes containers would stop responding to inbound TCP connections, but otherwise
 behave normally.  I built this test suite to catch that behavior as it happens, and see
-waht changes I could make to prevent that behavior.
+what changes I could make to prevent that behavior.
 
 ## Usage
 
