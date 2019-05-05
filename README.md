@@ -13,7 +13,7 @@ First, clone this repo.
 
 Next, start up the test container, followed by the testing script: 
 
-`./start-nginx.sh ; ./test-nginx.sh`
+`./start-nginx.sh; ./test-nginx.sh`
 
 If a port is specified as an argument to each script, it will be listned on, otherwise the default port of 8123 will be used.
 
@@ -24,6 +24,31 @@ testing will immediately commence.
 Testing consists of running curl against the Nginx container once per second, and writing
 the first line of output to a file named `results-YYYYMMDDTHHMMSS.log`.
 
+
+## Interpreting Results
+
+To see the results of tests, run `wc -l results-&ast;`.  Example:
+
+```
+wc -l results-&ast;
+      19 results-20190505T135448.log
+      60 results-20190505T135605.log
+    8570 results-20190505T135711.log
+```
+
+The timestamp on the file will tell when the test was started, and the number of
+lines will tell how many seconds nginx responded for.  In this case, there were a 
+few short-lived tests and then a test that ran for well over two hours.
+
+In the failure scenario that I had when originally writing this test, Docker containers would stop
+responding to TCP traffic within 30 minutes, yet I could `docker run -it ID bash` and 
+connect to those containers, and run `curl` from them, etc.
+
+
+## Contact
+
+My email is doug.muth@gmail.com.  I am also <a href="http://twitter.com/dmuth">@dmuth on Twitter</a> 
+and <a href="http://facebook.com/dmuth">Facebook</a>!
 
 
 
