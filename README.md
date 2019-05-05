@@ -27,7 +27,7 @@ the first line of output to a file named `results-YYYYMMDDTHHMMSS.log`.
 
 ## Interpreting Results
 
-To see the results of tests, run `wc -l results-&ast;`.  Example:
+To see the results of tests, run `wc -l results-*`.  Example:
 
 ```
 wc -l results-*
