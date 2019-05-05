@@ -8,6 +8,19 @@ set -e
 
 PORT=8123
 
+if test "$1" == "-h" -o "$1" == "--help"
+then
+	echo "! "
+	echo "! Syntax: $0 [ port ]"
+	echo "! "
+	exit 1
+fi
+
+if test "$1"
+then
+	PORT=$1
+fi
+
 FILENAME="test-results-$(date +%Y%m%dT%H%M%S).log"
 
 echo "# "
