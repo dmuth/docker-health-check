@@ -1,6 +1,8 @@
 
 # Docker Health Check
 
+<a href="./back-to-the-future-docker.jpg"><img src="./back-to-the-future-docker.jpg" width="300" align="right" /></a>
+
 I run Docker both in production on CentOS, and also run it on my Macs for development
 and testing. Recently, I noticed some weird behavior on my Mac's version of Docker
 where sometimes containers would stop responding to inbound TCP connections, but otherwise
