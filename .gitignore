@@ -1,6 +1,6 @@
 
 # Ignore test results
-test-results*
+results*
 
 # Vim droppings
 *.swp
