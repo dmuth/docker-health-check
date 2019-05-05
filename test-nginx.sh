@@ -21,7 +21,7 @@ then
 	PORT=$1
 fi
 
-FILENAME="test-results-$(date +%Y%m%dT%H%M%S).log"
+FILENAME="results-$(date +%Y%m%dT%H%M%S).log"
 
 echo "# "
 echo "# Testing against http://localhost:${PORT}/..."
