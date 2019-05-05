@@ -31,10 +31,19 @@ echo "# "
 echo "# Press ^C to stop testing..."
 echo "# "
 
+CURL_OPTS="--connect-timeout 2 -s -S --retry 3 --retry-connrefused --retry-delay 1"
 while true
 do
 
-	curl -s localhost:${PORT} | head -n1 | ts | tee -a $FILENAME
+	curl $CURL_OPTS localhost:${PORT} | head -n1 | ts | tee -a $FILENAME
+
+	RETVAL=${PIPESTATUS[0]}
+	if test "${RETVAL}" -ne 0
+	then
+		echo "CURL FAILED with status code: $RETVAL" >&2
+		exit 1
+	fi
+
 	sleep 1
 
 done
