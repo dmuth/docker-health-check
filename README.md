@@ -9,20 +9,21 @@ waht changes I could make to prevent that behavior.
 
 ## Usage
 
-First, clone this repo.
 
-Next, start up the test container, followed by the testing script: 
+bash <(curl -s https://raw.githubusercontent.com/dmuth/docker-health-check/master/go.sh) [ PORT ]
 
-`./start-nginx.sh; ./test-nginx.sh`
+If a port is specified as an argument, it will be listned on, otherwise the default port of 8123 will be used.
 
-If a port is specified as an argument to each script, it will be listned on, otherwise the default port of 8123 will be used.
-
-If Docker is not running or in the process of starting up, `start-nginx.sh` will 
+If Docker is not running or in the process of starting up, the script will 
 try to start the container once per second until it succeeds.  Once it succeeds,
 testing will immediately commence.
 
 Testing consists of running curl against the Nginx container once per second, and writing
 the first line of output to a file named `results-YYYYMMDDTHHMMSS.log`.
+
+If the container is killed (or Docker is stopped), the script will try to restart the 
+container once per second until it succeeds, then resume testing, with the results going
+to a new file.
 
 
 ## Interpreting Results
