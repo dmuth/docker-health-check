@@ -30,7 +30,7 @@ the first line of output to a file named `results-YYYYMMDDTHHMMSS.log`.
 To see the results of tests, run `wc -l results-&ast;`.  Example:
 
 ```
-wc -l results-&ast;
+wc -l results-*
       19 results-20190505T135448.log
       60 results-20190505T135605.log
     8570 results-20190505T135711.log
