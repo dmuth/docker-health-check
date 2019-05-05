@@ -25,7 +25,12 @@ fi
 echo "# "
 echo "# If Nginx container was previously running, I will now kill it..."
 echo "# "
-ID=$(docker kill $NAME || true)
+ID=$(docker kill $NAME 2>&1 || true)
+
+echo "# "
+echo "# If there was a stopped copy of that container, I will now remove it..."
+echo "# "
+ID=$(docker rm $NAME 2>&1 || true)
 
 echo "# "
 echo "# Starting Nginx conatiner, listening on port ${PORT}..."
