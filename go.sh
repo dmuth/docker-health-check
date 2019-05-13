@@ -37,34 +37,38 @@ fi
 
 function start_nginx() {
 
-echo "# "
-echo "# If Nginx container was previously running, I will now kill it..."
-echo "# "
-ID=$(docker kill $NAME 2>&1 || true)
+	echo "# "
+	echo "# If Nginx container was previously running, I will now kill it..."
+	echo "# "
+	ID=$(docker kill $NAME 2>&1 || true)
 
-echo "# "
-echo "# If there was a stopped copy of that container, I will now remove it..."
-echo "# "
-ID=$(docker rm $NAME 2>&1 || true)
+	echo "# "
+	echo "# If there was a stopped copy of that container, I will now remove it..."
+	echo "# "
+	ID=$(docker rm $NAME 2>&1 || true)
 
-echo "# "
-echo "# Starting Nginx conatiner, listening on port ${PORT}..."
-echo "# "
+	echo "# "
+	echo "# Starting Nginx conatiner, listening on port ${PORT}..."
+	echo "# "
 
-ID=""
+	ID=""
 
-#
-# Try once every second to start Nginx, until we succeed.
-#
-while test ! "$ID"
-do
-	ID=$(docker run -d --name $NAME -p $PORT:80 --rm nginx || true)
-	sleep 1
-done
+	#
+	# Try once every second to start Nginx, until we succeed.
+	#
+	while test ! "$ID"
+	do
+		ID=$(docker run -d --name $NAME -p $PORT:80 --rm nginx || true)
+		if test ! "$ID"
+		then
+			echo "# Could not start nginx, sleeping for 1 second and trying again..."
+		fi
+		sleep 1
+	done
 
-echo "# "
-echo "# Nginx started, and listenong on port ${PORT}!"
-echo "# "
+	echo "# "
+	echo "# Nginx started, and listening on port ${PORT}!"
+	echo "# "
 
 } # End of start_nginx()
 
