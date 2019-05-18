@@ -11,8 +11,7 @@ what changes I could make to prevent that behavior.
 
 ## Usage
 
-
-bash <(curl -s https://raw.githubusercontent.com/dmuth/docker-health-check/master/go.sh) [ PORT ]
+`bash <(curl -s https://raw.githubusercontent.com/dmuth/docker-health-check/master/go.sh) [ PORT ]`
 
 If a port is specified as an argument, it will be listned on, otherwise the default port of 8123 will be used.
 
