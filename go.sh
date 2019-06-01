@@ -48,7 +48,7 @@ function start_nginx() {
 	ID=$(docker rm $NAME 2>&1 || true)
 
 	echo "# "
-	echo "# Starting Nginx conatiner, listening on port ${PORT}..."
+	echo "# Starting Nginx container, listening on port ${PORT}..."
 	echo "# "
 
 	ID=""
